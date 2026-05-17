@@ -3,7 +3,7 @@
 import pandas as pd
 
 def open_file(file_name):
-    return pd.read_csv(f"data/{file_name}.csv")
+    return pd.read_csv(f"data/{file_name}")
 
 def clean_data(data):
     data.fillna({"debit": 0, "credit": 0}, inplace=True)
@@ -13,9 +13,6 @@ def clean_data(data):
     data["description"] = data["description"].str.title()
     return data
 
-def export_data(data):
-    data.to_csv("data/cleaned_data.csv", index=False)
+def export_data(data, name):
+    data.to_csv(f"data/clean_data/{name}.csv", index=False)
     print("Data exported successfully..")
-
-data = open_file("dirty_transactions")
-export_data(clean_data(data))
