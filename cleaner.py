@@ -10,7 +10,8 @@ def clean_data(data):
     data.fillna({'Debit': 0}, inplace=True)
     data['Balance'] = data['Balance'].ffill()
     data['Payment details'] = data['Payment details'].str.strip()
+    return data
 
 def export_data(data, name):
     data.to_excel(f"data/clean_data/{name}.xlsx", index=False)
-    print("Data exported successfully..")
+    print("data exported successfully...")
